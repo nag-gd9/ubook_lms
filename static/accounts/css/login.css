@@ -1,0 +1,94 @@
+body{
+    background-color: midnightblue;
+}
+    a{
+     text-decoration:none !important;
+     }
+     h1{
+     font-family: 'Kaushan Script', cursive;
+     }
+     h2{
+         padding-top: 3rem;
+         color: rgb(53, 5, 5);
+         font-family: Georgia, 'Times New Roman', Times, serif;
+         font-weight: bolder;
+     }
+     .im1{
+        margin-top: 2rem;
+        /* width:55%; */
+        float: left;
+        padding: 3rem;
+        width: 35rem;
+        /* max-width: 500px; */
+         }
+      .myform{
+    margin-top: 2rem;
+    margin-right: 1rem;
+    /* left: 20rem; */
+    width:23rem;
+    float: right;
+    position: absolute;
+    display: -ms-flexbox;
+    display: flex; 
+    padding: 1rem;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    pointer-events: auto;
+    background-color: rgb(228, 224, 224);
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 1.1rem; 
+    outline: 0;
+    max-width: 500px;
+     }
+     .tx-tfm{
+     text-transform:uppercase;
+     }
+     .mybtn{
+     border-radius:50px;
+     }
+    
+     .login-or {
+     position: relative;
+     color: #aaa;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     padding-top: 10px;
+     padding-bottom: 10px;
+     }
+     .span-or {
+     display: block;
+     position: absolute;
+     left: 50%;
+     top: -2px;
+     margin-left: -25px;
+     color: rgb(29, 4, 4);
+     background-color: rgb(238, 238, 238);
+     border-radius: 5px;
+     width: 50px;
+     text-align: center;
+     }
+     .hr-or {
+     height: 1px;
+     margin-top: 0px !important;
+     margin-bottom: 0px !important;
+     }
+     .google {
+     color:#666;
+     width:100%;
+     height:40px;
+     text-align:center;
+     outline:none;
+     border: 1px solid lightgrey;
+     }
+
+
+    .google:hover{
+        background-color: rgb(180, 214, 125);
+    }
+      form .error {
+     color: #ff0000;
+     }
+     #second{
+         display: none;
+     }

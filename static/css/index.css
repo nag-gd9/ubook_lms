@@ -1,0 +1,13 @@
+body {
+    background-color: rgb(209, 209, 209);
+}
+
+@media only screen and (max-width: 600px) {
+    .mobile {
+        display: none;
+    }
+}
+
+.ext_menu_icon:hover+.ext_menu {
+    display: block;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{% static '/css/index.css' %}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ae46928e6f.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <div class="lg:flex">
+        <!-- left nav -->
+        <div id="lf_menu" class="flex-none lg:w-1/6 h-screen bg-gray-50 mobile">
+            <div class="h-screen p-3">
+                <div class="flex items-center space-x-4 p-1 mb-5">
+                    <img class="h-8 rounded-full" src="http://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp" alt="James Bhatta">
+                    <div>
+                        <h4 class="font-semibold text-lg text-gray-700 capitalize font-poppins tracking-wide">{{request.user.username}}</h4>
+                        <span class="text-sm tracking-wide flex items-center space-x-1"><span class="text-green-600">{{ request.user.get_short_name}}</span></span>
+                    </div>
+                    <div class="text-red-400 pl-8 text-2xl lg:hidden">
+                        <i class="fas fa-times " onclick="left_menu()"></i>
+
+                    </div>
+
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li>
+                        <a href="/" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                            <span class="text-gray-600"><i class="fas fa-newspaper lg:text-2xl"></i></span>
+                            <span class="">Notice Board</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                            <span class="text-gray-600"><i class="fas fa-list-ol lg:text-2xl"></i></span>
+                            <span class="">Attendense</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                            <span class="text-gray-600"><i class="fas fa-chalkboard-teacher lg:text-2xl"></i></span>
+                            <span class="">Classes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                            <i class="far fa-clipboard lg:text-2xl"></i>
+                            <span class="">Exams</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                            <span class="text-gray-600"><i class="far fa-comment-alt lg:text-2xl"></i></span>
+                            <span class="">Messages</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                            <span class="text-gray-600"><i class="fas fa-user lg:text-2xl"></i></span>
+                            <span class="">My profile</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/accounts/logout" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 hover:text-red-600 focus:bg-gray-200 focus:shadow-outline">
+                            <i class="fas fa-sign-out-alt lg:text-2xl"></i>
+                            <span class="">Sign out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lg:flex-grow resize-x flex flex-col h-screen">
+            <!-- top nav -->
+            <div class="p-2 text-gray-900 bg-gray-50">
+
+                <span class="px-1 cursor-pointer lg:hidden" onclick="left_menu()">
+                      
+                      <i class="fas fa-bars p-2"></i>
+                </span>
+                <span class="px-1 cursor-pointer text-lg text-red-400 font-black">
+                    LMS
+                </span>
+                <span class="w-10 relative float-right mr-3 cursor-pointer hover:text-gray-700">
+                    <i class="fas fa-th p-2 p-2 hover:text-red-400" onclick="ext_menu()"></i>
+                </span>
+                <span class="w-10 relative float-right mr-3 cursor-pointer hover:text-gray-700">
+                      <i class="fas fa-calendar-alt p-2"></i>
+                </span>
+                <div id="ext_menu" class="ext_menu absolute right-4 mt-4 rounded-md shadow-lg overflow-hidden z-20 w-44 hidden ">
+                    <div class="flex flex-col space-y-2 h-30 p-2 font-medium bg-gray-200 ">
+                        <a href="/add-student/" class="flex items-center  space-x-2 p-2 rounded hover:bg-gray-400">
+                            <i class="fas fa-user-plus"></i>
+                            <p>Student</p>
+                        </a>
+                        <a href="/add-student/" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-400">
+                            <i class="fas fa-user-plus"></i>
+                            <p>Teacher</p>
+                        </a>
+                        <a href="/list-students/" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-400">
+                            <i class="far fa-address-book"></i>
+                            <p>List students</p>
+                        </a>
+                        <a href="/add-student/" class="flex items-center space-x-2 p-2 rounded hover:bg-gray-400">
+                            <i class="fas fa-user-plus"></i>
+                            <p></p>
+                        </a>
+                        
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- content box -->
+            <div class="flex-grow flex flex-col overflow-auto">
+                <!-- dashboard -->
+                {% block dashboard %}
+                {% endblock dashboard %}
+
+                <!-- form -->
+                {% block add_student_form %}
+                {% endblock add_student_form %}
+
+
+                <!--list student-->
+                {% block list_student %}
+                {% endblock list_student %}
+                <!--change student-->
+                {% block change_student_form %}
+                {% endblock change_student_form %}
+
+                
+            </div>
+        </div>
+
+    </div>
+    <script src="{% static '/js/index.js' %}" crossorigin="anonymous"></script>
+
+</html>
