@@ -29,7 +29,7 @@ SECRET_KEY = '*=qzbba=)f33m+hn_#(75mg_7laa4@_v*&bgfk&90!w@dzxool'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lms-ubook.herokuapp','127.0.0.1']
+ALLOWED_HOSTS = ['lms-ubook.herokuapp.com','127.0.0.1']
 
 
 # Application definition
