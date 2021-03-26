@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
 from user.models import Student, User
 from django.views.generic import View, TemplateView,ListView, DetailView, CreateView, UpdateView
@@ -33,10 +33,10 @@ def list_student_view(request):
 
 @login_required
 def perm(request):
-    a=request.user.get_group_permissions()
-    print(a)
-
-    return HttpResponse(a)
+  last_user = User.objects.all().order_by('id').last()
+  last_username = last_user.username
+  new_username = int(last_username) + 1
+  return HttpResponse(new_username)
 
 class StudentView(TemplateView):
     template_name = "sample2.html"
@@ -52,23 +52,22 @@ class StudentView(TemplateView):
 
 class StudentUpdateView(View):
     template_name = "edit_student.html" 
-    # DetailView
-    def get_object(self):
+    def get_student(self):
         id = str(self.kwargs.get('id'))
-        user = User.objects.get(username=id)
-        pk=user.pk
         obj = None
         if id is not None:
-            obj = get_object_or_404(Student, user_id=pk)
+            user = User.objects.get(username=id)
+            pk=user.pk
+            obj = get_object_or_404(Student, user_id=pk) 
         return obj
     
     def get(self, request, id=None, *args, **kwargs):
         # GET method
         context = {}
-        obj = self.get_object()
-        if obj is not None:
-            form = StudentForm(instance=obj)
-            context['object'] = obj
+        student = self.get_student()
+        if student is not None:
+            form = StudentForm(instance=student)
+            context['object'] = student
             context['form'] = form
             
         return render(request, self.template_name, context)
@@ -76,16 +75,23 @@ class StudentUpdateView(View):
     def post(self, request, id=None,  *args, **kwargs):
         # POST method
         context = {}
-        obj = self.get_object()
-        if obj is not None:
-            form = StudentForm(request.POST, instance=obj)
-            if form.is_valid():
-                form.save()
-                print(True)
-            context['object'] = obj
+        user = User.objects.get(username=id)
+        pk=user.pk
+        instance = Student.objects.get(user=pk)
+        form = StudentForm(request.POST or None, instance=instance)
+        if form.is_valid():
+            form.save()
+            # context['object'] = instance.user
             context['form'] = form
-        return render(request, self.template_name, context)
+        return redirect('/list-students')
 
+
+def class_attendence(request):
+    if request.user.has_perm('user.view_student'):
+        all_students = User.objects.all().filter(type='1', is_active=True)
+        return render(request, 'attendence.html', {'students':all_students})
+    else:
+        return render(request, 'access_denied.html', status=404)
 
 
 

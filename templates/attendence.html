@@ -1,0 +1,91 @@
+{% extends 'index.html' %}
+
+{% block attendence %}
+<style>
+.toggle__dot {
+  top: -.25rem;
+  left: -.25rem;
+  transition: all 0.2s ease-in-out;
+}
+
+input:checked ~ .toggle__dot {
+  transform: translateX(100%);
+  background-color: #03fc03;
+}
+</style>
+
+<script>
+function toggle(tid) {
+  var x = document.getElementById(arguments[0]);
+  
+  if (x.value === "a") {
+    x.value = "p";
+    console.log(1)
+  } else {
+    x.value = "a";
+    console.log(0)
+  }
+}
+</script>
+
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="flex flex-col m-1 lg:m-4">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-4">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 rounded-md">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50  text-xs">
+            <tr>
+              <th scope="col" class="p-2 text-center  font-medium text-green-500 uppercase tracking-wider">
+                Roll No.
+              </th>
+              <th scope="col" class="p-2 text-center  font-medium text-green-500 uppercase tracking-wider">
+                UID
+              </th>
+              <th scope="col" class="p-2 text-center font-medium text-green-500 uppercase tracking-wider">
+                Name
+              </th>
+              <th scope="col" class="p-2 text-center font-medium text-green-500 uppercase tracking-wider">
+                Attendence
+              </th>
+              
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200 ">
+            {%for student in students%}
+            <tr>
+              <td class="p-2 whitespace-nowrap text-center font-medium text-sm text-gray-500">{{forloop.counter}}</td>
+              <td class="p-2 whitespace-nowrap text-center font-medium text-sm text-gray-500">{{student.username}}</td>
+              <td class="p-2 whitespace-nowrap text-center font-medium text-sm text-gray-500">{{student.first_name}}</td>
+              <td class="p-2 whitespace-nowrap flex items-center justify-center text-sm font-medium" >
+                  <label for="t{{forloop.counter}}" class="flex items-center cursor-pointer")>
+                    <!-- toggle -->
+                    <div class="relative">
+                      <!-- input -->
+                      <input id="t{{forloop.counter}}" type="checkbox" class="hidden" value="a">
+                      <!-- line -->
+                      <div class="toggle__line w-10 h-4 bg-gray-400 rounded-full shadow-inner" onclick=toggle('t{{forloop.counter}}')></div>
+                      <!-- dot -->
+                      <div class="toggle__dot absolute w-6 h-6 bg-red-400 rounded-full shadow inset-y-0 left-0" onclick=toggle('t{{forloop.counter}}')></div>
+                    </div>
+                  </label>
+              </td>
+            </tr>
+            {%endfor%}
+
+            <!-- More items... -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock attendence %}
+
+

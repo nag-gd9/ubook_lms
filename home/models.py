@@ -1,3 +1,8 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
+class Class(models.Model):
+    class_id = models.IntegerField(_("class-id"))
+    class_name = models.CharField(max_length=256)
+    

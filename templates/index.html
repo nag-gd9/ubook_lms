@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>LMS | UBOOK</title>
+    <link rel="shortcut icon" href="{% static '/images/favicon.png' %}" type="image/x-icon">              
+
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="{% static '/css/index.css' %}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ae46928e6f.js" crossorigin="anonymous"></script>
@@ -16,7 +18,7 @@
 <body>
     <div class="lg:flex">
         <!-- left nav -->
-        <div id="lf_menu" class="flex-none lg:w-1/6 h-screen bg-gray-50 mobile">
+        <div id="lf_menu" class="flex-none md:w-full lg:w-1/6 h-screen bg-gray-50 mobile">
             <div class="h-screen p-3">
                 <div class="flex items-center space-x-4 p-1 mb-5">
                     <img class="h-8 rounded-full" src="http://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp" alt="James Bhatta">
@@ -24,8 +26,8 @@
                         <h4 class="font-semibold text-lg text-gray-700 capitalize font-poppins tracking-wide">{{request.user.username}}</h4>
                         <span class="text-sm tracking-wide flex items-center space-x-1"><span class="text-green-600">{{ request.user.get_short_name}}</span></span>
                     </div>
-                    <div class="text-red-400 pl-8 text-2xl lg:hidden">
-                        <i class="fas fa-times " onclick="left_menu()"></i>
+                    <div class="text-red-400 pl-8 text-2xl lg:hidden ">
+                        <i class="fas fa-times relative float-right mr-3" onclick="left_menu()"></i>
 
                     </div>
 
@@ -38,7 +40,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                        <a href="/attendence" class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                             <span class="text-gray-600"><i class="fas fa-list-ol lg:text-2xl"></i></span>
                             <span class="">Attendense</span>
                         </a>
@@ -89,7 +91,7 @@
                 <span class="px-1 cursor-pointer text-lg text-red-400 font-black">
                     LMS
                 </span>
-                <span class="w-10 relative float-right mr-3 cursor-pointer hover:text-gray-700">
+                <span class="w-10 relative float-right mr-3">
                     <i class="fas fa-th p-2 p-2 hover:text-red-400" onclick="ext_menu()"></i>
                 </span>
                 <span class="w-10 relative float-right mr-3 cursor-pointer hover:text-gray-700">
@@ -140,12 +142,17 @@
                 <!--change student-->
                 {% block change_student_form %}
                 {% endblock change_student_form %}
+                <!--attendence-->
+                {% block attendence %}{% endblock attendence %}
 
                 
             </div>
         </div>
 
     </div>
+
+
+    <!--script-->
     <script src="{% static '/js/index.js' %}" crossorigin="anonymous"></script>
 
 </html>

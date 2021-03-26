@@ -9,8 +9,14 @@
 </head>
 
 <body>
-<h1>{{object}}</h1>
-{{form.as_p}}
+
+    <h1>{{object}}</h1>
+    <form  method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Update</button>
+    </form>
 </body>
+
 
 </html>

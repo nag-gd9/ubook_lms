@@ -45,3 +45,8 @@ def login_registration_view(request):
 def logout_view(request):
     logout(request)
     return redirect("login")
+
+
+def csrf_failure(request, reason=""):
+    reason = 'Time Out'
+    return render(request, 'access_denied.html',{'reason':reason})

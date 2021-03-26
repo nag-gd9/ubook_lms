@@ -1,44 +1,42 @@
-{% extends 'index.html' %} 
-
-{% block add_student_form %}
+{% extends 'index.html' %} {% block add_student_form %} {% comment %}
 <div class="min-h-screen pt-1 font-mono my-8">
     <div class="container mx-auto">
         <div class="inputs w-full max-w-2xl mx-auto">
             <h2 class="text-2xl text-gray-900">Student details:</h2>
 
-            <form method="POST" action="/add-student/" class="mt-6 border-t border-gray-400 pt-4 pb-4">
+            <form method="POST" action="/administration/create-student/" class="mt-6 border-t border-gray-400 pt-4 pb-4">
                 {% csrf_token %}
                 <div class='flex flex-wrap -mx-3 mb-6'>
                     <div class="personal w-full pt-4">
                         <div class="flex items-center justify-between mt-4">
                             <div class='w-full md:w-1/2 px-3 mb-6'>
                                 <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>first name</label>
-                                <input name='first_name' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text' placeholder="First Name" >
+                                <input name='first_name' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text' placeholder="First Name">
                             </div>
                             <div class='w-full md:w-1/2 px-3 mb-6'>
                                 <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>last name</label>
-                                <input name='last_name' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text' placeholder="Second Name" >
+                                <input name='last_name' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text' placeholder="Second Name">
                             </div>
                         </div>
 
                         <div class='w-full md:w-full px-3 mb-6'>
                             <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Adhar Number</label>
-                            <input name='adhar' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' placeholder="1234-5678-9012" type='number' >
+                            <input name='adhar' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' placeholder="1234-5678-9012" type='number'>
                         </div>
 
                         <div class='w-full md:w-full px-3 mb-6'>
                             <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>date of birth</label>
-                            <input name='dob' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='date' >
+                            <input name='dob' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='date'>
                         </div>
 
                         <div class="flex items-center justify-between mt-4">
                             <div class='w-full md:w-1/2 px-3 mb-6'>
                                 <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Father Name</label>
-                                <input name='father' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text' placeholder="Father name" >
+                                <input name='father' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text' placeholder="Father name">
                             </div>
                             <div class='w-full md:w-1/2 px-3 mb-6'>
                                 <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Mother Name</label>
-                                <input name='mother' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text' placeholder="Mother name" >
+                                <input name='mother' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text' placeholder="Mother name">
                             </div>
                         </div>
                         <div class="border-b border-geen-300"></div>
@@ -46,11 +44,11 @@
                         <div class="flex items-center justify-between mt-4">
                             <div class='w-full md:w-1/2 px-3 mb-6'>
                                 <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Class</label>
-                                <input name='class' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='number' placeholder="Class ..." >
+                                <input name='class' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='number' placeholder="Class ...">
                             </div>
                             <div class='w-full md:w-1/2 px-3 mb-6'>
                                 <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Section</label>
-                                <input name='section' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text' placeholder="Section .." >
+                                <input name='section' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='text' placeholder="Section ..">
                             </div>
                         </div>
                         <div class='w-full md:w-full px-3 mb-6'>
@@ -70,16 +68,16 @@
 
                         <div class='w-full md:w-full px-3 mb-6'>
                             <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Contact Number</label>
-                            <input name='phone' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='tel' >
+                            <input name='phone' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='tel'>
                         </div>
                         <div class='w-full md:w-full px-3 mb-6'>
                             <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Address</label>
-                            <textarea name='address' class='bg-gray-100 rounded-md border leading-normal resize-none w-full h-20 py-2 px-3 shadow-inner border border-gray-400 font-medium placeholder-gray-700 focus:outline-none focus:bg-white' ></textarea>
+                            <textarea name='address' class='bg-gray-100 rounded-md border leading-normal resize-none w-full h-20 py-2 px-3 shadow-inner border border-gray-400 font-medium placeholder-gray-700 focus:outline-none focus:bg-white'></textarea>
                         </div>
                     </div>
                     <div class='w-full md:w-full px-3 mb-6'>
                         <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' for='grid-text-1'>email address</label>
-                        <input name='email' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' id='grid-text-1' type='text' placeholder='Enter email' >
+                        <input name='email' class='appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' id='grid-text-1' type='text' placeholder='Enter email'>
                     </div>
 
 
@@ -92,5 +90,13 @@
             </form>
         </div>
     </div>
-</div>
+</div> {% endcomment %}
+
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">
+    submit
+</button>
+</form>
 {% endblock add_student_form %}

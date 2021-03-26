@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path, os
+from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,8 +43,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'knox',
+
+    
     'user',
     'home',
+    'adminstartion',
+    'departments',
+    'api',
+
 ]
 
 MIDDLEWARE = [
@@ -107,6 +118,33 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
+}
+
+# from rest_framework.settings import api_settings
+REST_KNOX = {
+  'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
+  'AUTH_TOKEN_CHARACTER_LENGTH': 64,
+  'TOKEN_TTL': timedelta(hours=10),
+  'USER_SERIALIZER': 'knox.serializers.UserSerializer',
+  'TOKEN_LIMIT_PER_USER': None,
+  'AUTO_REFRESH': True,
+#   'EXPIRY_DATETIME_FORMAT': api_settings.DATETME_FORMAT,
+}
+
+
+
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 3600 # seconds
+
+CSRF_COOKIE_AGE = 3600 # seconds
+CSRF_FAILURE_VIEW = 'accounts.views.csrf_failure' # view path
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -130,4 +168,4 @@ STATICFILES_DIRS = [STATIC_DIR,]
 
 
 AUTH_USER_MODEL = 'user.User'
-DATE_INPUT_FORMATS = ['%Y-%m-%d']
+DATE_INPUT_FORMATS = ('%m/%d/%Y', '%Y-%m-%d', '%m/%d/%y', '%b %d %Y', '%b %d, %Y', '%d %b %Y', '%d %b, %Y', '%B %d %Y', '%B %d, %Y', '%d %B %Y', '%d %B, %Y','%b. %d, %Y')

@@ -1,5 +1,5 @@
 {% extends 'index.html' %} {% block change_student_form %}
-<div class="min-h-screen pt-1 font-mono my-8">
+<!-- <div class="min-h-screen pt-1 font-mono my-8">
     <div class="container mx-auto">
         <div class="inputs w-full max-w-2xl mx-auto">
             <h2 class="text-2xl text-gray-900">Student details:</h2>
@@ -76,9 +76,9 @@
                             <div class="flex-shrink w-full inline-block relative">
                                 <select name='lang' class="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded">
                                     <option value="English" >{{form.fav_language.value}}</option>
-                                    <option>English</option>
-                                    <option>Telugu</option>
-                                    <option>Hindi</option>
+                                    <option value='1'>English</option>
+                                    <option value='2'>Telugu</option>
+                                    <option value='3'>Hindi</option>
                                 </select>
                                 <div class="pointer-events-none absolute top-0 mt-3  right-0 flex items-center px-2 text-gray-600">
                                     <i class="fas fa-caret-down"></i>
@@ -112,9 +112,12 @@
             </form>
         </div>
     </div>
-</div>
-<!-- <form action="/{{object}}/student/" method="post">
+</div> -->
+<form action="/{{object}}/student/" method="post">
     {{object}} {% csrf_token %} {{form.as_p}}
     <button type="submit">UPDATE</button>
-</form> -->
+</form>
+
+
+
 {% endblock change_student_form %}
